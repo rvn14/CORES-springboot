@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Login - Cores</title>
+</head>
+<body class="bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 min-h-screen flex items-center justify-center">
+    <!-- Background Decorative Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full opacity-20 blur-xl"></div>
+        <div class="absolute top-1/3 right-20 w-40 h-40 bg-gradient-to-r from-purple-400 to-indigo-400 rounded-full opacity-20 blur-xl"></div>
+        <div class="absolute bottom-20 left-1/4 w-36 h-36 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 blur-xl"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-md">
+        <!-- Login Card -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30">
+            <!-- Logo Section -->
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 bg-gradient-to-r from-orange-400 to-pink-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <span class="text-white text-md font-bold">CORES</span>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Welcome to CORES</h1>
+                <p class="text-gray-600">Connect, Share, and Discover</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="space-y-6">
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">✉️</span>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            class="w-full pl-10 pr-4 py-3 bg-gray-50/80 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔒</span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            class="w-full pl-10 pr-4 py-3 bg-gray-50/80 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input 
+                            type="checkbox" 
+                            id="remember" 
+                            name="remember"
+                            class="w-4 h-4 text-orange-400 bg-gray-100 border-gray-300 rounded focus:ring-orange-400 focus:ring-2"
+                        >
+                        <label for="remember" class="ml-2 text-sm text-gray-600">Remember me</label>
+                    </div>
+                    <a href="#" class="text-sm text-orange-500 hover:text-orange-600 font-medium transition-colors duration-200">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Login Button -->
+                <button 
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-semibold py-3 px-6 rounded-xl hover:from-orange-500 hover:to-pink-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 transform hover:scale-[1.02] transition-all duration-200 shadow-lg"
+                >
+                    Sign In
+                </button>
+
+                <!-- Divider -->
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white/80 text-gray-500">Or continue with</span>
+                    </div>
+                </div>
+
+                <!-- Social Login Buttons -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button 
+                        type="button"
+                        class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl bg-white/80 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-all duration-200"
+                    >
+                        <span class="mr-2">🔍</span>
+                        <span class="text-sm font-medium">Google</span>
+                    </button>
+                    <button 
+                        type="button"
+                        class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl bg-white/80 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-all duration-200"
+                    >
+                        <span class="mr-2">📘</span>
+                        <span class="text-sm font-medium">Facebook</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Sign Up Link -->
+            <div class="mt-8 text-center">
+                <p class="text-gray-600">
+                    Don't have an account? 
+                    <a href="/signup" class="text-orange-500 hover:text-orange-600 font-semibold transition-colors duration-200">
+                        Sign up
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Preview -->
+        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                <div class="text-2xl mb-2">🤝</div>
+                <p class="text-sm font-medium text-gray-700">Connect</p>
+                <p class="text-xs text-gray-500">with friends</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                <div class="text-2xl mb-2">📱</div>
+                <p class="text-sm font-medium text-gray-700">Share</p>
+                <p class="text-xs text-gray-500">your moments</p>
+            </div>
+            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                <div class="text-2xl mb-2">🌟</div>
+                <p class="text-sm font-medium text-gray-700">Discover</p>
+                <p class="text-xs text-gray-500">new content</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
