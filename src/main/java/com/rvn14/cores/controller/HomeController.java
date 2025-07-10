@@ -6,19 +6,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+
     @GetMapping({"/", ""})
-    public String index() {
-        return "index";
+    public String root() {
+        return "redirect:/login";
     }
 
+    // Login page
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
+    // Registration (Sign Up) page
     @GetMapping("/signup")
     public String signup() {
         return "signup";
     }
-
 }
