@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -30,13 +30,13 @@
             </div>
 
             <!-- Signup Form -->
-            <form class="space-y-5">
+            <form th:action="@{/signup}" th:object="${signupForm}" method="post" class="space-y-5">
                 <!-- Full Name Field -->
                 <div>
                     <label for="fullname" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">👤</span>
-                        <input 
+                        <input th:field="*{fullName}"
                             type="text" 
                             id="fullname" 
                             name="fullname"
@@ -44,6 +44,9 @@
                             placeholder="Enter your full name"
                             required
                         >
+                        <div th:if="${#fields.hasErrors('fullName')}" class="text-red-500 text-xs mt-1">
+                            <span th:errors="*{fullName}"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -52,7 +55,7 @@
                     <label for="username" class="block text-sm font-semibold text-gray-700 mb-2">Username</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">@</span>
-                        <input 
+                        <input th:field="*{username}"
                             type="text" 
                             id="username" 
                             name="username"
@@ -60,6 +63,9 @@
                             placeholder="Choose a username"
                             required
                         >
+                        <div th:if="${#fields.hasErrors('username')}" class="text-red-500 text-xs mt-1">
+                            <span th:errors="*{username}"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -68,7 +74,7 @@
                     <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">✉️</span>
-                        <input 
+                        <input th:field="*{email}"
                             type="email" 
                             id="email" 
                             name="email"
@@ -76,6 +82,9 @@
                             placeholder="Enter your email"
                             required
                         >
+                        <div th:if="${#fields.hasErrors('email')}" class="text-red-500 text-xs mt-1">
+                            <span th:errors="*{email}"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -84,7 +93,7 @@
                     <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔒</span>
-                        <input 
+                        <input th:field="*{password}"
                             type="password" 
                             id="password" 
                             name="password"
@@ -92,6 +101,9 @@
                             placeholder="Create a password"
                             required
                         >
+                        <div th:if="${#fields.hasErrors('password')}" class="text-red-500 text-xs mt-1">
+                            <span th:errors="*{password}"></span>
+                        </div>
                     </div>
                 </div>
 
@@ -100,7 +112,7 @@
                     <label for="confirm-password" class="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔐</span>
-                        <input 
+                        <input th:field="*{confirmPassword}"
                             type="password" 
                             id="confirm-password" 
                             name="confirm-password"
@@ -108,18 +120,24 @@
                             placeholder="Confirm your password"
                             required
                         >
+                        <div th:if="${#fields.hasErrors('confirmPassword')}" class="text-red-500 text-xs mt-1">
+                            <span th:errors="*{confirmPassword}"></span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Terms & Privacy -->
                 <div class="flex items-start">
-                    <input 
+                    <input th:field="*{terms}"
                         type="checkbox" 
                         id="terms" 
                         name="terms"
                         class="w-4 h-4 mt-1 text-orange-400 bg-gray-100 border-gray-300 rounded focus:ring-orange-400 focus:ring-2"
                         required
                     >
+                    <div th:if="${#fields.hasErrors('terms')}" class="text-red-500 text-xs mt-1">
+                        <span th:errors="*{terms}"></span>
+                    </div>
                     <label for="terms" class="ml-3 text-sm text-gray-600">
                         I agree to the 
                         <a href="#" class="text-orange-500 hover:text-orange-600 font-medium">Terms of Service</a> 
@@ -127,6 +145,8 @@
                         <a href="#" class="text-orange-500 hover:text-orange-600 font-medium">Privacy Policy</a>
                     </label>
                 </div>
+
+           <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
                 <!-- Signup Button -->
                 <button 
