@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -51,15 +51,13 @@
                 </div>
             </nav>
 
-            <!-- Download App Section -->
-            <div class="mt-auto">
-                <div class="bg-gradient-to-r from-orange-400 to-pink-400 rounded-lg p-4 text-center">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mx-auto mb-2">
-                        <span class="text-orange-500 text-md font-bold">CORES</span>
-                    </div>
-                    <p class="text-white text-sm font-medium">Download the App</p>
-                </div>
-            </div>
+            <!-- Logout Button -->
+            <form th:action="@{/logout}" method="post" class="mt-auto">
+                <button type="submit" class="w-full bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 flex items-center cursor-pointer gap-2">
+                    <span>⚠️</span>
+                    <span>Logout</span>
+                </button>
+            </form>
         </div>
 
         <!-- Main Content -->
@@ -131,7 +129,7 @@
                                     <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-400"></div>
                                     <div>
                                         <h3 class="font-semibold text-gray-800">Mike Davis</h3>
-                                        <p class="text-sm text-gray-500">10MIN AGO</p>
+                                        <p class="text-sm text-gray-500">10min ago</p>
                                     </div>
                                 </div>
                                 <button class="text-gray-400 hover:text-gray-600">⋯</button>
