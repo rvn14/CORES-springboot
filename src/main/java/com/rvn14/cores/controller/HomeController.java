@@ -8,8 +8,8 @@ public class HomeController {
 
 
     @GetMapping({"/", ""})
-    public String root() {
-        return "redirect:/login";
+    public String home() {
+        return "index";
     }
 
     // Login page
@@ -18,9 +18,5 @@ public class HomeController {
         return "login";
     }
 
-    // Registration (Sign Up) page
-    @GetMapping("/signup")
-    public String signup() {
-        return "signup";
-    }
+
 }
