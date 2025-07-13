@@ -18,8 +18,8 @@
                 <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xl font-bold mb-3">
                     J
                 </div>
-                <h3 class="font-semibold text-gray-800">John Smith</h3>
-                <p class="text-sm text-gray-500">@john.smith@example.com</p>
+                <h3 class="font-semibold text-gray-800" th:text="${user.username}">Username</h3>
+                <p class="text-sm text-gray-500" th:text="'@' + ${user.email}">@email</p>
             </div>
 
             <!-- Navigation -->

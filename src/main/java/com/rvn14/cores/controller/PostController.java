@@ -27,6 +27,7 @@ public class PostController {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow();
         model.addAttribute("postForm", new PostForm());
         model.addAttribute("posts", postService.getPostsByUser(user));
+        model.addAttribute("user", user);
         return "index";
     }
 
@@ -46,4 +47,5 @@ public class PostController {
         postService.createPost(postForm.getContent(), user);
         return "redirect:/index";
     }
+
 }
