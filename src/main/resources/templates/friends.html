@@ -1,0 +1,106 @@
+<!-- FRIENDS PAGE TEMPLATE (friends.html)-->
+<!doctype >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Friends - Cores</title>
+</head>
+<body class="bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 min-h-screen">
+
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white/80 backdrop-blur-sm shadow-lg p-6 flex flex-col">
+        <!-- Profile Section -->
+        <div class="flex flex-col items-center mb-8">
+            <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xl font-bold mb-3">
+                <span th:text="${user.username.substring(0,1).toUpperCase()}">J</span>
+            </div>
+            <h3 class="font-semibold text-gray-800" th:text="${user.username}">Username</h3>
+            <p class="text-sm text-gray-500" th:text="'@' + ${user.email}">@email</p>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 space-y-2">
+            <a th:href="@{/}" class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>📰</span>
+                <span class="font-medium">News Feed</span>
+            </a>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>✉️</span>
+                <span>Messages</span>
+                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">12</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>💬</span>
+                <span>Forums</span>
+            </div>
+            <div class="bg-gray-900 text-white px-4 py-3 rounded-lg flex items-center gap-3">
+                <span>👥</span>
+                <span>Friends</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>📱</span>
+                <span>Media</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>⚙️</span>
+                <span>Settings</span>
+            </div>
+        </nav>
+
+        <!-- Logout Button -->
+        <form th:action="@{/logout}" method="post" class="mt-auto">
+            <button type="submit" class="w-full bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 flex items-center cursor-pointer gap-2">
+                <span>⚠️</span>
+                <span>Logout</span>
+            </button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6 flex flex-col">
+        <div class="max-w-3xl mx-auto w-full">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">Friends Directory</h1>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <div th:each="user : ${usersPage.content}"
+                     class="bg-white/90 backdrop-blur-sm rounded-2xl shadow p-5 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 flex items-center justify-center text-white font-bold text-lg">
+                            <span th:text="${user.username.substring(0,1).toUpperCase()}">U</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800" th:text="${user.username}">Username</h3>
+                            <p class="text-sm text-gray-500" th:text="${user.email}">user@example.com</p>
+                        </div>
+                    </div>
+                    <button class="text-sm bg-gray-900 text-white px-4 py-1 rounded-full hover:bg-gray-800">View</button>
+                </div>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="flex items-center justify-between mt-4 text-sm text-gray-700">
+                <a th:if="${usersPage.hasPrevious()}"
+                   th:href="@{/friends(page=${currentPage - 1}, size=${usersPage.size})}"
+                   class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">
+                    ⬅ Previous
+                </a>
+
+                <span class="font-medium">
+                    Page <span th:text="${usersPage.number + 1}">1</span> of
+                    <span th:text="${usersPage.totalPages}">1</span>
+                </span>
+
+                <a th:if="${usersPage.hasNext()}"
+                   th:href="@{/friends(page=${currentPage + 1}, size=${usersPage.size})}"
+                   class="px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">
+                    Next ➡
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
