@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h2>Incoming Friend Requests</h2>
+<ul th:each="req : ${incomingRequests}">
+    <li>
+        <span th:text="${req.sender.firstName}"></span>
+        <form th:action="@{'/friends/accept/' + ${req.id}}" method="post"><button>Accept</button></form>
+        <form th:action="@{'/friends/decline/' + ${req.id}}" method="post"><button>Decline</button></form>
+    </li>
+</ul>
+
+<h2>Outgoing Friend Requests</h2>
+<ul th:each="req : ${outgoingRequests}">
+    <li th:text="${req.receiver.firstName}"></li>
+</ul>
+
+
+
+</body>
+</html>
