@@ -15,11 +15,16 @@
     <div class="w-64 bg-white/80 backdrop-blur-sm shadow-lg p-6 flex flex-col">
         <!-- Profile Section -->
         <div class="flex flex-col items-center mb-8">
-            <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xl font-bold mb-3">
-                J
-            </div>
+            <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xl font-bold mb-3"
+                 th:text="${user.username.substring(0, 1).toUpperCase()}">J</div>
+
             <h3 class="font-semibold text-gray-800" th:text="${user.username}">Username</h3>
             <p class="text-sm text-gray-500" th:text="'@' + ${user.email}">@email</p>
+
+            <!-- 🔗 View Friends Button -->
+            <a th:href="@{/friends}" class="mt-4 px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-full text-sm font-semibold hover:scale-105 transition-all shadow-lg">
+                👥 View Friends
+            </a>
         </div>
 
         <!-- Navigation -->

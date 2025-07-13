@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Users</title></head>
+<body>
+
+<h1>Friends</h1>
+
+<div th:each="user : ${usersPage.content}">
+  <div th:insert="fragments/user-details :: userDetailsFragment(${user})"></div>
+</div>
+
+<!-- Pagination -->
+<div>
+  <a th:href="@{/friends(page=${usersPage.number - 1})}" th:if="${usersPage.hasPrevious()}">Previous</a>
+  <span>Page <span th:text="${usersPage.number + 1}"></span> of <span th:text="${usersPage.totalPages}"></span></span>
+  <a th:href="@{/friends(page=${usersPage.number + 1})}" th:if="${usersPage.hasNext()}">Next</a>
+</div>
+
+</body>
+</html>
