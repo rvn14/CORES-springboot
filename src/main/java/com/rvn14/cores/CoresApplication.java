@@ -10,4 +10,6 @@ public class CoresApplication {
         SpringApplication.run(CoresApplication.class, args);
     }
 
+    //1st comment
+
 }
