@@ -9,279 +9,247 @@
     <title>Cores - Connect, Share, and Discover</title>
 </head>
 <body class="bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 min-h-screen">
-    <div class="flex min-h-screen">
-        <!-- Sidebar -->
-        <div class="w-64 bg-white/80 backdrop-blur-sm shadow-lg p-6 flex flex-col">
-            <!-- Profile Section -->
-            <div class="flex flex-col items-center mb-8">
-                <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xl font-bold mb-3">
-                    J
-                </div>
-                <h3 class="font-semibold text-gray-800">John Smith</h3>
-                <p class="text-sm text-gray-500">@john.smith@example.com</p>
+
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white/80 backdrop-blur-sm shadow-lg p-6 flex flex-col">
+        <!-- Profile Section -->
+        <div class="flex flex-col items-center mb-8">
+            <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xl font-bold mb-3">
+                J
             </div>
-
-            <!-- Navigation -->
-            <nav class="flex-1 space-y-2">
-                <div class="bg-gray-900 text-white px-4 py-3 rounded-lg flex items-center gap-3">
-                    <span>📰</span>
-                    <span class="font-medium">News Feed</span>
-                </div>
-                <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
-                    <span>✉️</span>
-                    <span>Messages</span>
-                    <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">12</span>
-                </div>
-                <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
-                    <span>💬</span>
-                    <span>Forums</span>
-                </div>
-                <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
-                    <span>👥</span>
-                    <span>Friends</span>
-                    <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">14</span>
-                </div>
-                <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
-                    <span>📱</span>
-                    <span>Media</span>
-                </div>
-                <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
-                    <span>⚙️</span>
-                    <span>Settings</span>
-                </div>
-            </nav>
-
-            <!-- Logout Button -->
-            <form th:action="@{/logout}" method="post" class="mt-auto">
-                <button type="submit" class="w-full bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 flex items-center cursor-pointer gap-2">
-                    <span>⚠️</span>
-                    <span>Logout</span>
-                </button>
-            </form>
+            <h3 class="font-semibold text-gray-800" th:text="${user.username}">Username</h3>
+            <p class="text-sm text-gray-500" th:text="'@' + ${user.email}">@email</p>
         </div>
 
-        <!-- Main Content -->
-        <div class="flex-1 p-6 flex flex-col">
-            <div class="max-w-2xl mx-auto flex-1 flex flex-col">
-                <!-- Header -->
-                <div class="flex justify-start items-start mb-8">
-                    <div class="flex items-center space-x-8">
-                        <h1 class="text-3xl font-bold text-gray-800">Feeds</h1>
-                        <div class="flex items-center space-x-6 border-b border-gray-200">
-                            <span class="cursor-pointer hover:text-gray-700 pb-2 text-gray-500 transition-colors duration-200">Recents</span>
-                            <span class="cursor-pointer hover:text-gray-700 pb-2 text-gray-800 font-semibold border-b-2 border-orange-400 transition-colors duration-200">Friends</span>
-                            <span class="cursor-pointer hover:text-gray-700 pb-2 text-gray-500 transition-colors duration-200">Popular</span>
-                        </div>
+        <!-- Navigation -->
+        <nav class="flex-1 space-y-2">
+            <div class="bg-gray-900 text-white px-4 py-3 rounded-lg flex items-center gap-3">
+                <span>📰</span>
+                <span class="font-medium">News Feed</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>✉️</span>
+                <span>Messages</span>
+                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">12</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>💬</span>
+                <span>Forums</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>👥</span>
+                <span>Friends</span>
+                <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">14</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>📱</span>
+                <span>Media</span>
+            </div>
+            <div class="px-4 py-3 rounded-lg flex items-center gap-3 text-gray-700 hover:bg-gray-100 cursor-pointer">
+                <span>⚙️</span>
+                <span>Settings</span>
+            </div>
+        </nav>
+
+        <!-- Logout Button -->
+        <form th:action="@{/logout}" method="post" class="mt-auto">
+            <button type="submit" class="w-full bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 flex items-center cursor-pointer gap-2">
+                <span>⚠️</span>
+                <span>Logout</span>
+            </button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6 flex flex-col">
+        <div class="max-w-2xl mx-auto flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="flex justify-start items-start mb-8">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-3xl font-bold text-gray-800">Feeds</h1>
+                    <div class="flex items-center space-x-6 border-b border-gray-200">
+                        <span class="cursor-pointer hover:text-gray-700 pb-2 text-gray-500 transition-colors duration-200">Recents</span>
+                        <span class="cursor-pointer hover:text-gray-700 pb-2 text-gray-800 font-semibold border-b-2 border-orange-400 transition-colors duration-200">Friends</span>
+                        <span class="cursor-pointer hover:text-gray-700 pb-2 text-gray-500 transition-colors duration-200">Popular</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- Stories Section -->
-                <div class="flex space-x-4 mb-8">
-                    <div class="w-20 h-20 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 p-1">
-                        <div class="w-full h-full rounded-full bg-gray-300"></div>
-                    </div>
-                    <div class="w-20 h-20 rounded-full bg-gradient-to-r from-green-400 to-blue-400 p-1">
-                        <div class="w-full h-full rounded-full bg-gray-300"></div>
-                    </div>
+            <!-- Stories Section -->
+            <div class="flex space-x-4 mb-8">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 p-1">
+                    <div class="w-full h-full rounded-full bg-gray-300"></div>
                 </div>
+                <div class="w-20 h-20 rounded-full bg-gradient-to-r from-green-400 to-blue-400 p-1">
+                    <div class="w-full h-full rounded-full bg-gray-300"></div>
+                </div>
+            </div>
 
-                <!-- Scrollable Posts Area -->
-                <div class="flex-1 overflow-y-auto mb-6">
-                    <!-- Posts -->
-                    <div class="space-y-6">
-                        <!-- Post 1 -->
-                        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-purple-400"></div>
-                                    <div>
-                                        <h3 class="font-semibold text-gray-800">Sarah Johnson</h3>
-                                        <p class="text-sm text-gray-500">online</p>
-                                    </div>
+            <!-- Scrollable Posts Area -->
+            <div class="flex-1 overflow-y-auto mb-6">
+                <!-- Posts -->
+                <!-- Dynamic Post Feed -->
+                <div class="space-y-6" th:each="post : ${posts}">
+                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-purple-400"></div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800" th:text="${post.author.username}">Author</h3>
+                                    <p class="text-sm text-gray-500" th:text="${#temporals.format(post.createdAt, 'dd MMM yyyy HH:mm')}">Timestamp</p>
                                 </div>
-                                <button class="text-gray-400 hover:text-gray-600">⋯</button>
                             </div>
-                            
-                            <p class="text-gray-700 mb-4">
-                                Good day lovers❤️ of Benz, it's been a wonderful experience in the yard of the most luxurious and classic cars producing company; Mercedes benz in florida thanks 🙏 <span class="text-blue-500">@mike_cars</span>, <span class="text-blue-500">@carart</span> and 🔥 <span class="text-blue-500">@david_motors</span> for this unforgettable experience!!!!!!! 🔥
-                            </p>
-
-                            <div class="flex items-center space-x-6 text-gray-500">
-                                <span class="flex items-center space-x-1">
-                                    <span>👁️</span>
-                                    <span class="text-sm">369k</span>
-                                </span>
-                                <span class="flex items-center space-x-1">
-                                    <span>❤️</span>
-                                    <span class="text-sm">Like</span>
-                                </span>
-                                <span class="flex items-center space-x-1">
-                                    <span>💬</span>
-                                    <span class="text-sm">Comments</span>
-                                </span>
-                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">⋯</button>
                         </div>
 
-                        <!-- Post 2 -->
-                        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-400"></div>
-                                    <div>
-                                        <h3 class="font-semibold text-gray-800">Mike Davis</h3>
-                                        <p class="text-sm text-gray-500">10min ago</p>
-                                    </div>
-                                </div>
-                                <button class="text-gray-400 hover:text-gray-600">⋯</button>
-                            </div>
-                            
-                            <p class="text-gray-700 mb-4">
-                                Hi mates🔥Its a new week, I hope we will have the best of it. Let's go guys!!!
-                                And, dont forget to like and share. Thanks ❤️
-                            </p>
+                        <p class="text-gray-700 mb-4" th:text="${post.content}">Post content</p>
 
-                            <div class="flex items-center space-x-6 text-gray-500">
-                                <span class="flex items-center space-x-1">
-                                    <span>👁️</span>
-                                    <span class="text-sm">365k</span>
-                                </span>
-                                <span class="flex items-center space-x-1">
-                                    <span>❤️</span>
-                                    <span class="text-sm">Like</span>
-                                </span>
-                                <span class="flex items-center space-x-1">
-                                    <span>💬</span>
-                                    <span class="text-sm">Comments</span>
-                                </span>
-                            </div>
+                        <div class="flex items-center space-x-6 text-gray-500">
+                            <span class="flex items-center space-x-1"><span>👁️</span><span class="text-sm">0</span></span>
+                            <span class="flex items-center space-x-1"><span>❤️</span><span class="text-sm">Like</span></span>
+                            <span class="flex items-center space-x-1"><span>💬</span><span class="text-sm">Comments</span></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Create Post - Sticky Bottom -->
-                <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200 sticky bottom-0">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-pink-400"></div>
-                        <input type="text" placeholder="Share post" class="flex-1 bg-gray-100 rounded-full px-4 py-2 text-gray-700 placeholder-gray-500">
-                        <button class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-gray-800">Send</button>
-                    </div>
-                    <div class="flex items-center space-x-4 text-gray-500">
+            </div>
+
+            <!-- Create Post - Sticky Bottom -->
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200 sticky bottom-0">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-pink-400"></div>
+                    <form th:action="@{/posts}" method="post" th:object="${postForm}" class="w-full">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-pink-400"></div>
+                            <input type="text"
+                                   th:field="*{content}"
+                                   placeholder="Share post"
+                                   class="flex-1 bg-gray-100 rounded-full px-4 py-2 text-gray-700 placeholder-gray-500"
+                                   maxlength="500"
+                                   required>
+                            <button type="submit" class="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-gray-800">Send</button>
+                        </div>
+                        <div th:if="${#fields.hasErrors('content')}" class="text-red-500 text-sm mt-1 ml-14" th:errors="*{content}"></div>
+                    </form>
+                </div>
+                <div class="flex items-center space-x-4 text-gray-500">
                         <span class="flex items-center space-x-1 cursor-pointer hover:text-gray-700">
                             <span>📁</span>
                             <span class="text-sm">File</span>
                         </span>
-                        <span class="flex items-center space-x-1 cursor-pointer hover:text-gray-700">
+                    <span class="flex items-center space-x-1 cursor-pointer hover:text-gray-700">
                             <span>🖼️</span>
                             <span class="text-sm">Image</span>
                         </span>
-                        <span class="flex items-center space-x-1 cursor-pointer hover:text-gray-700">
+                    <span class="flex items-center space-x-1 cursor-pointer hover:text-gray-700">
                             <span>📍</span>
                             <span class="text-sm">Location</span>
                         </span>
-                        <span class="flex items-center space-x-1 cursor-pointer hover:text-gray-700">
+                    <span class="flex items-center space-x-1 cursor-pointer hover:text-gray-700">
                             <span>🌐</span>
                             <span class="text-sm">Public</span>
                         </span>
-                    </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Right Sidebar -->
-        <div class="w-80 p-6 space-y-6">
-            <!-- Suggestions -->
-            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Suggestions</h3>
-                <div class="space-y-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-400"></div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Tom Wilson</h4>
-                            </div>
-                        </div>
-                        <button class="bg-gray-900 text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800">Follow</button>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-purple-400"></div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Emma Brown</h4>
-                            </div>
-                        </div>
-                        <button class="bg-gray-900 text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800">Follow</button>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-400"></div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Alex Miller</h4>
-                            </div>
-                        </div>
-                        <button class="bg-gray-900 text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800">Follow</button>
-                    </div>
-                </div>
-                <p class="text-blue-500 text-sm mt-4 cursor-pointer hover:underline">See all</p>
-            </div>
-
-            <!-- Currently Online -->
-            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Currently Online</h3>
-                <div class="space-y-3">
-                    <div class="flex items-center space-x-3">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"></div>
-                            <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-800 text-sm">Sarah Johnson</h4>
-                            <p class="text-xs text-green-600">Active now</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-400"></div>
-                            <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-800 text-sm">Mike Davis</h4>
-                            <p class="text-xs text-green-600">Active 2m ago</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-red-400"></div>
-                            <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-800 text-sm">Emma Brown</h4>
-                            <p class="text-xs text-green-600">Active 5m ago</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400"></div>
-                            <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-800 text-sm">Tom Wilson</h4>
-                            <p class="text-xs text-green-600">Active 8m ago</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-yellow-400"></div>
-                            <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white"></div>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-800 text-sm">Alex Miller</h4>
-                            <p class="text-xs text-yellow-600">Away</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-blue-500 text-sm mt-4 cursor-pointer hover:underline">See all online</p>
             </div>
         </div>
     </div>
+
+    <!-- Right Sidebar -->
+    <div class="w-80 p-6 space-y-6">
+        <!-- Suggestions -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Suggestions</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-400"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Tom Wilson</h4>
+                        </div>
+                    </div>
+                    <button class="bg-gray-900 text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800">Follow</button>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-purple-400"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Emma Brown</h4>
+                        </div>
+                    </div>
+                    <button class="bg-gray-900 text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800">Follow</button>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-400"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Alex Miller</h4>
+                        </div>
+                    </div>
+                    <button class="bg-gray-900 text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800">Follow</button>
+                </div>
+            </div>
+            <p class="text-blue-500 text-sm mt-4 cursor-pointer hover:underline">See all</p>
+        </div>
+
+        <!-- Currently Online -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Currently Online</h3>
+            <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"></div>
+                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 text-sm">Sarah Johnson</h4>
+                        <p class="text-xs text-green-600">Active now</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-green-400"></div>
+                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 text-sm">Mike Davis</h4>
+                        <p class="text-xs text-green-600">Active 2m ago</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-orange-400 to-red-400"></div>
+                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 text-sm">Emma Brown</h4>
+                        <p class="text-xs text-green-600">Active 5m ago</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400"></div>
+                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 text-sm">Tom Wilson</h4>
+                        <p class="text-xs text-green-600">Active 8m ago</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-yellow-400"></div>
+                        <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full border-2 border-white"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 text-sm">Alex Miller</h4>
+                        <p class="text-xs text-yellow-600">Away</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-blue-500 text-sm mt-4 cursor-pointer hover:underline">See all online</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
