@@ -38,6 +38,7 @@ public class PostController {
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow();
 
         if (result.hasErrors()) {
+            model.addAttribute("postForm", postForm);
             model.addAttribute("posts", postService.getPostsByUser(user));
             return "index";
         }
